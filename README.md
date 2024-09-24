@@ -29,7 +29,7 @@
 
 ![Home2](https://github.com/user-attachments/assets/7ac2a15e-8bb9-4fe0-ac24-2e3be88b7ba6)
 
-<h1>FlightDetails(FlightDetails.jsx):</h1>
+<h1>Flight Details(FlightDetails.jsx):</h1>
 
 -Basılan uçuş biletiyle ilgili daha detaylı bilgiler ve daha farklı bir tasarım burada görülebilir.
 
@@ -37,7 +37,7 @@
 
 ![FlightDetails](https://github.com/user-attachments/assets/46459ac8-bad2-4a5d-b3f7-dca891788b46)
 
-<h1>FlightDetails(FlightDetails.jsx):</h1>
+<h1>My Flights(MyFlights.jsx):</h1>
 
 -Kullanıcının FlightDetails.jsx sayfasından satın aldığı bütün uçuş biletleri tarihleriyle birlikte ve en son aldığı bilet en üstte görülecek şekilde görüntülenir.
 
