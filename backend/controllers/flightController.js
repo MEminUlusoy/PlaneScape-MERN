@@ -1,7 +1,11 @@
+//* models klasörü içindeki flightModel.js veritabanını Flight ismiyle çektik
 import Flight from "../models/flightModel.js";
 
+//* Uçuş bileti üretmek için thunderCLient'dan üretiliyor sadece.
+//* bir sorun olursa görelim diye try-catch bloğu içinde yazdık
 const createFlight = async (req,res)=>{
     try {
+        //* request'den aldığı bilgileri  veri tabanına Flight nesnesiyle create ediyor ve flight değişkenini json verisi olarak yolluyor.
         const flight = await Flight.create(req.body)
         res.status(201).json({
             succeded: true,
@@ -15,15 +19,10 @@ const createFlight = async (req,res)=>{
     }
 }
 
-const getAllFlights = async (req,res)=> {
 
-    // try {
-    //     const flight = await Flight.find({})
-    //     res.status(200).json({
-    //         succeded: true,
-    //         count: flight.length,
-    //         data: flight
-    //     })
+//* requestden aldığı sorguları eğer varsa filter objesine atıyor. Date içinse aldığı tarih aralığında bilgi varsa bu bilgiyi filter objesine atıyor
+//* filter objesi Flight modeli içerisine konularak, uygun veriler flights değişkenine veriliyor ve yollanıyor.
+const getAllFlights = async (req,res)=> {
 
     const { departureCity, arrivalCity, startDate, endDate } = req.query;
     try {
@@ -49,6 +48,8 @@ const getAllFlights = async (req,res)=> {
     }
 }
 
+
+//* basılan verinin id'si url'ye yollanıyor ve bu url'deki id veritabanındaki id ile karşılaştırılıp uygun veriyi yolluyor
 const getAFlight = async (req,res)=> {
     try {
         const flight = await Flight.findById({_id: req.params.id})
@@ -64,7 +65,7 @@ const getAFlight = async (req,res)=> {
     }
 }
 
-
+//* Yine aynı şekilde uygun olan id bulunuyor ve requestdeki bilgi ile değiştiriliyor update ediliyor.
 const updateFlight = async (req,res) => {
     try {
         const flight = await Flight.findByIdAndUpdate({_id: req.params.id}, req.body)
@@ -87,7 +88,8 @@ const updateFlight = async (req,res) => {
     }
 }
 
-
+//* uygun veri bulunuyor ve bu veri findByIdAndDelete fonksiyonu sayesinde siliniyor
+//* eğer böyle veri yoksa bu id 'ye uygun o zaman "Flight Not Found" mesajı dönüyor
 const deleteFlight = async (req,res) => {
     try {
         const flight = await Flight.findByIdAndDelete({_id: req.params.id})

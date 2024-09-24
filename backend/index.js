@@ -5,11 +5,14 @@ import cors from "cors";
 import flightRoute from "./routes/flightRoute.js"
 import myFlightRoute from  "./routes/myFlightRoute.js"
 
+//* dotenv dosyasından veri çekebilmek için yazmamız gerekti 
 dotenv.config();
+//* database bağlantısı için 
 conn();
 
 const app = express();
 const port = process.env.PORT;
+//* json ifadeleri görebilmek için
 app.use(express.json())
 
 app.use(cors())
@@ -26,6 +29,8 @@ app.get("/", (req,res)=>{
     res.status(234).send("Welcome my friend!")
 })
 
+//* url'den gelen /flights veya /myFlights isteklerini routes klasörü içindeki dosyalara yolluyor
+//* routes klasörü , controllers klasörü içindeki fonksiyonları çekiyor. Bu fonksiyonlarda backend sorgularını gerçekleştiriyor.
 app.use("/flights", flightRoute)
 app.use("/myFlights", myFlightRoute)
 

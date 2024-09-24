@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+//* veritabanı bağlantısı
 const conn = ()=>{
     mongoose.connect(process.env.mongoDBURL,{
         dbName: "PlaneScape",

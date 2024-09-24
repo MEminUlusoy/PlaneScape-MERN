@@ -20,22 +20,28 @@ import axios from 'axios';
 import FlightFilter from '../components/FlightFilter';
 import { Link } from 'react-router-dom';
 
+//* Anasayfa burası. Veri tutabilmek için useState çektik. Başta loading false veriyoruz. Veriler gelene kadar true yapcaz çünkü true ise Spinner.jsx animasyonu gözükcek. True değilse veriler gözükcek
 
 const Home = () => {
 
     const [flights, setFlights] = useState([])
     const [loading, setLoading] = useState(false)
 
+    //* onChange sayesinde setDepartureCity gibi değişkenlere veri atıp departureCity gibi değişkenleri sorgu olarak yollamak için useState açtık 
     const [departureCity, setDepartureCity] = useState('')
     const [arrivalCity, setArrivalCity] = useState('')
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
 
+    //*  /details/:id şeklinde verilere FlightDetails.jsx bakıcak diye app.jsx 'de belirtmiştik burada da eğer websayfasında check details butonuna basılırsa bu url'ye veritabanındaki id'mizi yollayarak veriyi FlightDetails.jsx de bulabilmemizi sağlıyor.
 
     const handleFilterChange = () => {
         setLoading(true);
+        //* veritabanına sorgularımızı yolluyoruz await ile
         axios.get(`http://localhost:5555/flights?departureCity=${departureCity}&arrivalCity=${arrivalCity}&startDate=${startDate}&endDate=${endDate}`)
             .then((res) => {
+                //* veritabanından aldığımız sorguları setFlights ile flights useState içine attık
+                //* aşağıdada eğer flight arrayi boşsa filtrelemek için veri girin yazısı gözükcek eğer değilse verileri mapliyoruz çünkü flight arrayine atmıştık verileri.
                 setFlights(res.data.data);
                 setLoading(false);
             })

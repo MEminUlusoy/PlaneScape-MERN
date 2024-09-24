@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 
 const {Schema} = mongoose;
 
+//* Bütün uçuş biletinde yazan verilerin adları. Bu bilgiler controllers içindeki myFlightController.js 'den çekiliyor
+//* My Flights sayfamızda satın aldığımız biletleri görmek için Flight modeliyle ilişki kurmammız gerek bunun için ref: Flight dedik ve id sini alabilmek içinse ype: mongoose.Schema.Types.ObjectId  dedik.
 const myFlightSchema = new Schema({
     flightId: { type: mongoose.Schema.Types.ObjectId, ref: 'Flight', required: true },
     company: { type: String, required: true },

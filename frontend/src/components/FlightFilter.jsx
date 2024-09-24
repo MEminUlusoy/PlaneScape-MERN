@@ -1,5 +1,6 @@
 import React from 'react'
 
+//* anasayfadaki input radio'ların div tasarımı burada
 const FlightFilter = () => {
     return (
         <div className='h-full w-1/4  pl-9 pt-3 '>

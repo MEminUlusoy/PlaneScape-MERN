@@ -24,10 +24,13 @@ const MyFlights = () => {
     const [myFlights, setMyFlights] = useState([]);
     const [loading, setLoading] = useState(false)
 
+
+    //* Burada ise gelen veriler sayfa açılınca direk gözüksün diye useEffect içine koyduk. myFlightController içindeki getAllMyFlights fonksiyonuna istek yapıyoruz veritbanındaki verileri almak için
     useEffect(() => {
         setLoading(true)
         axios.get('http://localhost:5555/myFlights')
             .then((res) => {
+                //* myFlightModel.js içinden aldığımız verileri setMyFlights' a atıyoruz bu sayede myFlights useState'ini map'leyebiliriz.
                 setMyFlights(res.data.data);
                 setLoading(false)
             })

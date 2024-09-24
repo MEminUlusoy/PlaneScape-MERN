@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import MyFlights from './pages/MyFlights'
 
 
-
+//*Sayfa dağılımlarına hangi .jsx dosyası gelecek bunu Routes ve Route ile yaptık
 const App = () => {
   return (
     <Routes>

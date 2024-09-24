@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const {Schema} = mongoose;
 
+//* Bütün uçuş biletinde yazan verilerin adları. Bu bilgiler controllers içindeki flightController.js 'den çekiliyor
 const flightSchema = new Schema({
     company: {
         type: String,

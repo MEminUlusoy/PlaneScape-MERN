@@ -8,7 +8,7 @@ import { IoCarOutline } from "react-icons/io5";
 import { LiaHotelSolid } from "react-icons/lia";
 import { GiPalmTree } from "react-icons/gi";
 import { IoIosPaperPlane } from "react-icons/io";
-
+//* Yükleniyor animasyonu
 import Spinner from '../components/Spinner';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -19,19 +19,25 @@ import { useSnackbar} from 'notistack';
 const FlightDetails = () => {
 
     const [flight, setFlight] = useState({});
+    //* veriler gelene kadar animasyon gözükmesi için Spinnerı kontrol etmeye yarıyor.
     const [loading, setLoading] = useState(false);
+    //* url'deki id'yi alıp sorguda yazabilmek için useParams kullandık
     const {id} = useParams();
+    //* sayfa yönlendirmesi için
     const navigate = useNavigate();
+    //* uçuş bileti satın alındı bildirimi için kullandık
     const {enqueueSnackbar} = useSnackbar()
 
 
     
-
+    //* Home.jsx 'den check the details butonu ile yollanan id burada sorguya koyularak flightControllers.js içindeki getAFlight fonksiyonuna gidiyor yani backende.
+    //* çekilen veri tek bir veri olduğu için map'lemeden direk kullandık.
     useEffect(()=>{
         
         axios.get(`http://localhost:5555/flights/${id}`)
             .then((res)=>{
                 console.log("API Response Data:", res.data);
+                //* veritabanı sorgusuyla bulunan veri setFlight ile flight'a atanıyor. Veriler daha detaylı gözükmek için flights.  şeklinde değişkenlere ulaşıcaz.
                 setFlight(res.data.flight)
                 setLoading(false)
             })
@@ -41,6 +47,8 @@ const FlightDetails = () => {
             })
     },[])
 
+    //* Buy Ticket butonuna basılınca bu fonksiyon çalışıyor. Amaç My Flights sayfasında satın aldığımız veriyi create etmek.
+    //* bunun için veriler myFlightModel değişkeni adlarına göre atanıyor.
     const handleBuyTicket = () => {
         const newFlight = {
             flightId: flight._id,
@@ -60,11 +68,14 @@ const FlightDetails = () => {
             date: flight.date
         };
 
+        //* atanan veriler axios.post sayesinde myFlightController.js içindeki createMyFlight fonksiyonuna giderek veri oluşturuluyor.
         axios.post('http://localhost:5555/myFlights', newFlight)
             .then((response) => {
                 console.log("Flight purchased:", response.data.data);
+                //* Bilet satın alındı bildirimi için kullandık.
                 enqueueSnackbar("Ticket Is Buyed Successfully", {variant: "success"}) 
-                navigate('/myFlights')// Satın alma işlemi sonrası MyFlights sayfasına yönlendirir.
+                //* Butona basınca direk bu url'ye götürcek yani My Flights sayfasına
+                navigate('/myFlights')
             })
             .catch((error) => {
                 console.log("Error purchasing flight:", error);

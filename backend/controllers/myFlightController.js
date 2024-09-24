@@ -1,5 +1,9 @@
+//*myFlightModel.js içinden aldığımız modeli MyFlight ismiyle çekiyoruz
 import MyFlight from "../models/myFlightModel.js";
 
+
+//* FlightDetails.jsx sayfasından Buy Ticket butonuna basınca verimiz create edilecek
+//* bir sorun olursa görelim diye try-catch bloğu içinde yazdık
 const createMyFlight = async (req,res) => {
     try {
         const myFlight = await MyFlight.create(req.body)
@@ -18,6 +22,7 @@ const createMyFlight = async (req,res) => {
 }
 
 
+//* Bütün myFlights verileri gözükcek
 const getAllMyFlights = async (req,res) => {
     try {
         const myFlight = await MyFlight.find({}).sort({ createdAt: -1 })
