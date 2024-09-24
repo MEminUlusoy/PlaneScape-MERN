@@ -19,7 +19,7 @@
 
 <h1>Anasayfa Filtreleme (Home.jsx):</h1>
 
--Kullanıcının gidiş-varış yerine ve gireceği tarih aralığı içine uygun olan uçuş biletlerini Show Flights butonuna basılınca karşımıza getiriyor. 
+-Kullanıcının gidiş-varış yerine ve gireceği tarih aralığı içine uygun olan uçuş biletlerini Show Flights butonuna basılınca karşımıza getiriyor. (Ankara-İzmir veya Ankara-İstanbul arası sorgu yapınız. 20 Eylül-30 Eylül arası en çok veri bulunuyor)
 
 -Burada bütün uçuş bilgileri veritabanından çekilmiştir.
 
