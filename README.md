@@ -13,7 +13,7 @@
 
 <h1>Anasayfa (Home.jsx):</h1>
 
-- Filtreleme yapmadan önce kullanıcıdan filtrelemek için veri girişi isteniyor.
+- Filtreleme yapmadan önce kullanıcıdan filtrelemek için veri girişi isteniyor.Program kesinlikle çalışıyor ancak filtrelemede sorun yaşarsanız sayfayı yenileyin ve tekrar filtreleyin. 
   
 ![Home1](https://github.com/user-attachments/assets/fcc8c82a-7429-4240-b6d8-64cb0632f169)
 
